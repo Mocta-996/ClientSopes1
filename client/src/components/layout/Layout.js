@@ -1,11 +1,10 @@
-import React from 'react';
-import TopBar from './TopBar.js';
+import React from "react";
+import TopBar from "./TopBar.js";
 function Layout(props) {
-    return (
+  return (
     <React.Fragment>
       <TopBar />
       {props.children}
-        {/*<Footer/>*/}
     </React.Fragment>
   );
 }

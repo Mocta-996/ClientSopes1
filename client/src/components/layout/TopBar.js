@@ -1,20 +1,22 @@
-import React, { useState,useEffect } from 'react';
+import React from 'react';
+import { useNavigate } from "react-router-dom";
 import { Menubar } from 'primereact/menubar';
 import { Button } from 'primereact/button';
 
 function TopBar() {
+    const navigate = useNavigate();
 
   
     const items = [
         {
-            label: 'Login',
-            icon: 'pi pi-fw pi-sign-in',
-            //command: ()=>{setShowLogin(true)}
+            label: 'Live',
+            icon: 'pi pi-play',
+            command: ()=>{navigate("/")}
         },
         {
-            label: 'Register',
-            icon: 'pi pi-fw pi-user-plus',
-            //command: ()=>{setShowRegister(true)}
+            label: 'Logs',
+            icon: 'pi pi-sort-alt',
+            command: ()=>{navigate("/logs");}
         }
     ];
    
