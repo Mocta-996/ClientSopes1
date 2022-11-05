@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Dropdown } from "primereact/dropdown";
 import BarChart from "../chart/BarChart";
+import {Urlserver} from "../../services/services";
+import axios from "axios";
 function Live() {
     const [selectedCity1, setSelectedCity1] = useState(null);
     const [selectedPlay, setSelectedPlay] = useState(null);
@@ -26,6 +28,22 @@ function Live() {
         //console.log(resultadossearch);
         setListPlay(resultadossearch);
     };
+
+    const handleGet = async() => {
+        try{
+            //  obtener equipos 
+            //const res = await axios.get(`${Urlserver}api/instance`);
+            //console.log(res.data);
+
+        }catch{
+
+        }
+    
+    }
+    useEffect (() => {
+       
+    }, []);
+
 
     return (
         <div className="card">

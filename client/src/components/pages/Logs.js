@@ -1,11 +1,30 @@
 import React,{useState, useEffect} from "react";
 import { ScrollPanel } from "primereact/scrollpanel";
 import { Button } from 'primereact/button';
+import socket from "./socket";
 import "./styles.css";
 function Logs() {
     const [lastTen, setLasTen] = useState([]); 
     const [now, setNow] = useState("Esperando datos");
     const [count, setCount] = useState(0);
+
+    // RECIBIR MENSAJES DEL SERVIDOR
+    useEffect(() => {
+        socket.on("logs", (mensaje) => {
+            //console.log(mensaje.id_chat , id_chat);
+            console.log("recuperando mensaje", mensaje);
+            setNow(mensaje);
+            setCount(count + 1);
+            setLasTen([...lastTen, mensaje]);
+            if(lastTen.length > 10){
+                setLasTen(lastTen.slice(lastTen.length - 10));
+            }
+        });
+        return () => {
+            socket.off();
+        };
+    }, [lastTen, count]);
+
 
     const clear = () => {
         setLasTen([]);
@@ -29,8 +48,8 @@ function Logs() {
         return () => {
             socket.close();
         };*/
-        setLasTen(ten);
-        setNow(nowdata);
+        //setLasTen(ten);
+        //setNow(nowdata);
     }, []);
     return (
         <div className="scrollpanel-demo">
